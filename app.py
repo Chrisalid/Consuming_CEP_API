@@ -11,7 +11,7 @@ def clear():
 
 
 while True:
-    ask = input('Do you want to do a zip code inquiry? (Y/n)')
+    ask = input('Do you want to do a zip code inquiry? (Y/n) ')
 
     if ask[0].upper() == 'Y':
         cep = int(input('Enter the zip code: '))
