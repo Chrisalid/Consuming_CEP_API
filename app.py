@@ -16,12 +16,23 @@ while True:
     if ask[0].upper() == 'Y':
         cep = int(input('Enter the zip code: '))
 
-        data = req.get(f'https://viacep.com.br/ws/{cep}/json/')
+        try:
+            data = req.get(f'https://viacep.com.br/ws/{cep}/json/')
 
-        dic = dict(data.json()).items()
+            dic = dict(data.json()).items()
 
-        for items in dic:
-            print(f'{items[0]}: {items[1]}')
+            for items in dic:
+                print(f'{items[0]}: {items[1]}')
+        except Exception:
+            message = 'Zip Code Not Found'
+
+            response = {
+                'response status': data.status_code,
+                'message': message,
+            }
+
+            print(response)
+            continue
 
     elif ask[0].upper() == 'N':
         clear()
